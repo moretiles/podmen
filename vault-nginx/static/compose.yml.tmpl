@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  vault-nginx:
+    image: "localhost/nginx:1.3"
+    container_name: vault-nginx
+    user: {{ vault "kv/home/user/vault_nginx_podman" "uid" }}:{{ vault "kv/home/user/vault_nginx_podman" "uid" }}
+    volumes:
+      - ./fs/etc/nginx/:/etc/nginx/:Z,U,ro
+      - ./fs/var/log/nginx/:/var/log/nginx:Z,U
+      - ./fs/var/lib/nginx/:/var/lib/nginx/:Z,U
+      - ./fs/run/nginx/:/run/nginx/:Z,U
+    ports:
+      - {{ vault "kv/home/port/vault_nginx" "num" }}:{{ vault "kv/home/port/vault_nginx" "num" }}
+    #command: sleep 300

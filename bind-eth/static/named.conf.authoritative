@@ -1,0 +1,44 @@
+acl goodclients {
+	localhost;
+	127.0.0.1;
+	::1;
+	10.0.0.0/8; //#gitleaks:allow
+	192.168.0.0/16; //#gitleaks:allow
+	172.16.0.0/12; //#gitleaks:allow
+};
+
+options {
+    listen-on port 5556 { any; };
+    listen-on-v6 port 5556 { any; };
+    allow-query { goodclients; };
+    allow-recursion { goodclients; };
+    allow-transfer { none; };
+    directory "/var/cache/bind";
+    dnssec-validation auto;
+    //dnssec-validation no;
+    auth-nxdomain no;    # conform to RFC1035
+    max-cache-size 90%;
+    version "not currently available";
+    forwarders {
+        8.8.8.8;
+        8.8.8.4;
+	1.1.1.1;
+    };
+    // Queries are forwarded if not for a defined zone or in cache
+    //forward only;
+};
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+// rfc 8375 shows why it is not feasable to setup dnssec for home.arpa
+zone "home.arpa" {
+	type master;
+	//inline-signing yes;
+	//dnssec-policy default;
+	file "/etc/bind/db.home.arpa";
+};

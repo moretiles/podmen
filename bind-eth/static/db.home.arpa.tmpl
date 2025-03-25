@@ -1,0 +1,25 @@
+;
+; BIND data file for internal zone
+;
+$TTL	86400
+@	IN	SOA	ns1.home.arpa. admin.home.arpa. (
+			      8		; Serial
+			  86400		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 86400 	        ; Negative Cache TTL
+);
+
+@	IN	NS	ns1.home.arpa.
+ns1	IN	A	{{ vault "kv/home/ips/ns1" "ip" }}
+
+ntp     IN      A       {{ vault "kv/home/ips/ntp" "ip" }}
+vault   IN      A       {{ vault "kv/home/ips/vault" "ip" }}
+ca      IN      A       {{ vault "kv/home/ips/ca" "ip" }}
+
+router	IN	A	{{ vault "kv/home/ips/router" "ip" }}
+switch	IN	A	{{ vault "kv/home/ips/switch" "ip" }}
+hostpi  IN      A       {{ vault "kv/home/ips/hostpi" "ip" }}
+
+oa      IN      A       {{ vault "kv/home/ips/oa" "ip" }}
+ob      IN      A       {{ vault "kv/home/ips/ob" "ip" }}

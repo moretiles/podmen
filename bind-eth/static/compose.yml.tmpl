@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  bind:
+    image: localhost/bind:2.6
+    user: {{ vault "kv/home/user/bind_eth_podman" "uid" }}:{{ vault "kv/home/user/bind_eth_podman" "gid" }}
+    container_name: bind-eth
+    ports:
+      - "{{ vault "kv/home/ips/ns1" "ip" }}:53:5556/tcp"
+      - "127.0.0.1:53:5556/tcp"
+      - "127.0.0.53:53:5556/tcp"
+      - "127.0.0.54:53:5556/tcp"
+      - "[::1]:53:5556/tcp"
+      - "{{ vault "kv/home/ips/ns1" "ip" }}:53:5556/udp"
+      - "127.0.0.1:53:5556/udp"
+      - "127.0.0.53:53:5556/udp"
+      - "127.0.0.54:53:5556/udp"
+      - "[::1]:53:5556/udp"
+    volumes:
+      - ./fs/etc/bind:/etc/bind:Z,U
+      - ./fs/var/cache/bind:/var/cache/bind:Z,U
+      #- ./volumes/usr/share/dns/root.hints:/usr/share/dns/root.hints:Z,ro
+    capabilities:
+      - CAP_NET_ADMIN
+      - CAP_NET_BIND_SERVICE

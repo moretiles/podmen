@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  vault-unseal:
+    #image: "ghcr.io/lrstanley/vault-unseal" # only for amd64
+    image: "localhost/vault-unseal:1.1" # build for either ig
+    container_name: vault-unseal
+    user: {{ vault "kv/home/user/vault_unseal_podman" "uid" }}:{{ vault "kv/home/user/vault_unseal_podman" "gid" }}
+    volumes:
+      - ./vault-unseal/vault-unseal.yaml:/etc/vault-unseal.yaml:Z,U,ro
+    #command: vault-unseal --config /etc/vault-unseal.yaml

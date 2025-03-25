@@ -1,0 +1,17 @@
+api_addr                = "https://vault.home.arpa:8200"
+cluster_addr            = "https://vault.home.arpa:8201"
+cluster_name            = "learn-vault-cluster"
+disable_mlock           = true
+ui                      = true
+
+listener "tcp" {
+	address       = "vault:8200"
+	#tls_disable = true
+	tls_cert_file = "/vault/certs/vault-cert.pem"
+	tls_key_file  = "/vault/certs/vault-key.rsa"
+}
+
+storage "raft" {
+	path = "/vault/raft"
+	node_id = "podman_vault"
+}
