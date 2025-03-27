@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  registry:
+    image: "localhost/registry:1.0"
+    container_name: registry
+    user: {{ vault "kv/home/user/registry_podman" "uid" }}:{{ vault "kv/home/user/registry_podman" "gid" }}
+    volumes:
+      - ./fs/etc/docker-registry/:/etc/docker-registry/:Z,U,ro
+      - ./fs/etc/htpasswd:/etc/htpasswd:Z,U,ro
+      - ./fs/var/lib/docker-registry/:/var/lib/docker-registry/:Z,U
+    ports:
+      - "{{ vault "kv/home/ips/registry" "ip" }}:{{ vault "kv/home/port/registry" "num" }}:{{ vault "kv/home/port/registry" "num" }}/tcp"
+    #command: sleep 300

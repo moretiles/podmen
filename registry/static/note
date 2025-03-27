@@ -1,0 +1,1 @@
+User passwords must be hashed using bcrypt or registry ignores the user entry.

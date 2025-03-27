@@ -1,0 +1,44 @@
+version: 0.1
+log:
+  level: info
+  accesslog:
+    disabled: false
+  # If you prefer logging to a file, change 'formatter' to "text" or "json",
+  # remove 'hooks', and uncomment 'logfile' in /etc/conf.d/docker-registry.
+  formatter: syslog
+  hooks:
+    - type: syslog
+storage:
+  cache:
+    blobdescriptor: inmemory
+  filesystem:
+    rootdirectory: /var/lib/docker-registry
+  delete:
+    enabled: false
+http:
+  addr: :5000
+  secret: {{ vault "kv/home/registry/config" "secret" }}
+  headers:
+    X-Content-Type-Options: [nosniff]
+  # Enable the debug endpoint. This may be used by the init script to check if
+  # the daemon is healthy. See healthcheck_url in /etc/conf.d/docker-registry.
+  debug:
+    addr: localhost:5001
+  tls:
+    certificate: /etc/docker-registry/cert.pem
+    key: /etc/docker-registry/key.rsa
+auth:
+  htpasswd:
+    realm: basic-realm
+    path: /etc/htpasswd
+health:
+  storagedriver:
+    enabled: true
+    interval: 10s
+    threshold: 3
+
+# Uncomment to use this Registry as pull-through cache for DockerHub.
+#proxy:
+#  remoteurl: https://registry-1.docker.io
+#  username:
+#  password:
