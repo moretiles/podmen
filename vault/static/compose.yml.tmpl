@@ -11,8 +11,8 @@ services:
       #VAULT_SKIP_VERIFY: "true"
       #HOME: "/vault"
     ports:
-      - 8200:8200
-      - 8201:8201
+	- "{{ vault "kv/home/ips/vault" "ip" }}:{{ vault "kv/home/port/vault" "num" }}:{{ vault "kv/home/port/vault" "num" }}/tcp"
+	- "{{ vault "kv/home/ips/vault" "ip" }}:{{ vault "kv/home/port/vault_cluster" "num" }}:{{ vault "kv/home/port/vault_cluster" "num" }}/tcp"
         #- 8202:8202
         #- 8300:8300
         #- 8301:8301

@@ -10,5 +10,5 @@ services:
       - ./fs/var/lib/nginx/:/var/lib/nginx/:Z,U
       - ./fs/run/nginx/:/run/nginx/:Z,U
     ports:
-      - {{ vault "kv/home/port/vault_nginx" "num" }}:{{ vault "kv/home/port/vault_nginx" "num" }}
+    - {{ vault "kv/home/ips/vault_nginx" "ip" }}:{{ vault "kv/home/port/vault_nginx" "num" }}:{{ vault "kv/home/port/vault_nginx" "num" }}
     #command: sleep 300
