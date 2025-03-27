@@ -9,6 +9,7 @@ fi
 
 mkdir -p ../live
 sudo vault-templates ./templates
+sudo chmod 600 ../live/vault-unseal/vault-unseal.yaml
 cp ./systemd.sh ../live/systemd.sh
 chown -R dv:dv ../live
 sudo -u dv ../../deploy.sh
