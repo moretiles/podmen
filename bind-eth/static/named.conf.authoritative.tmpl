@@ -7,6 +7,8 @@ acl goodclients {
 	172.16.0.0/12; //#gitleaks:allow
 };
 
+acl wireguard { {{ vault "kv/wg/network" "ip"}}/{{ vault "kv/wg/network" "cidr" }}; };
+
 options {
     listen-on port 5556 { any; };
     listen-on-v6 port 5556 { any; };
@@ -36,9 +38,23 @@ options {
 //include "/etc/bind/zones.rfc1918";
 
 // rfc 8375 shows why it is not feasable to setup dnssec for home.arpa
-zone "home.arpa" {
-	type master;
-	//inline-signing yes;
-	//dnssec-policy default;
-	file "/etc/bind/db.home.arpa";
+
+view "wireguard" {
+    match-clients { wireguard; };
+    zone "home.arpa" {
+        type master;
+        //inline-signing yes;
+        //dnssec-policy default;
+        file "/etc/bind/db.wg.home.arpa";
+    };
+};
+
+view "home" {
+    match-clients { any; };
+    zone "home.arpa" {
+        type master;
+        //inline-signing yes;
+        //dnssec-policy default;
+        file "/etc/bind/db.eth.home.arpa";
+    };
 };
