@@ -8,6 +8,6 @@ if (( "$(id -u)" != 0 )); then
 fi
 
 podman generate systemd --new --requires bind-eth_podman.service --after bind-eth_podman.service --after vault.target --requires vault.target --wants vault-certificate@registry_podman.timer registry
-echo '#######'
+echo 'WAIT
 echo 'Make sure to activate vault-certificate@registry_podman.timer'
-echo '#######'
+echo 'WAIT
