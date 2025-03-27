@@ -9,7 +9,6 @@ fi
 
 mkdir -p ../live
 vault-templates ./templates
-cp named.conf.authoritative ../live/fs/etc/bind/named.conf.authoritative
 cp ./systemd.sh ../live
 chown -R dv:dv ../live
 sudo -u dv ../../deploy.sh

@@ -1,0 +1,22 @@
+;
+; BIND data file for internal zone
+;
+$TTL	86400
+@	IN	SOA	ns1.home.arpa. admin.home.arpa. (
+			      9		; Serial
+			  86400		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 86400 	        ; Negative Cache TTL
+);
+
+@	IN	NS	ns1.home.arpa.
+ns1	IN	A	{{ vault "kv/wg/server" "ip" }}
+
+; Don't need to list hosts, only services which are accessed 
+; by a reverse proxy on the server
+
+ntp       IN      A       {{ vault "kv/wg/server" "ip" }}
+vault     IN      A       {{ vault "kv/wg/server" "ip" }}
+ca        IN      A       {{ vault "kv/wg/server" "ip" }}
+registry  IN      A       {{ vault "kv/wg/server" "ip" }}
