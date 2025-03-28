@@ -39,6 +39,9 @@ options {
 
 // rfc 8375 shows why it is not feasable to setup dnssec for home.arpa
 
+// Match zone to provide based on client ip
+
+// Only for wireguard clients
 view "wireguard" {
     match-clients { wireguard; };
     zone "home.arpa" {
@@ -49,6 +52,7 @@ view "wireguard" {
     };
 };
 
+// All other hosts (i.e. on my network)
 view "home" {
     match-clients { any; };
     zone "home.arpa" {
