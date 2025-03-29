@@ -1,0 +1,12 @@
+# Start of rndc.conf
+key "rndc-key" {
+        algorithm {{ vault "kv/home/bind/rndc" "alg" }};
+        secret "{{ vault "kv/home/bind/rndc" "key" }}";
+};
+
+options {
+        default-key "rndc-key";
+        default-source-address 127.0.0.1;
+        default-server 127.0.0.1;
+        default-port {{ vault "kv/home/port/bind" "rndc" }};
+};
