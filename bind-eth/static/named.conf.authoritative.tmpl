@@ -42,15 +42,15 @@ options {
 // Match zone to provide based on client ip
 
 // Only for wireguard clients
-view "wireguard" {
-    match-clients { wireguard; };
-    zone "home.arpa" {
-        type master;
-        //inline-signing yes;
-        //dnssec-policy default;
-        file "/etc/bind/db.wg.home.arpa";
-    };
-};
+//view "wireguard" {
+//    match-clients { wireguard; };
+//    zone "home.arpa" {
+//        type master;
+//        //inline-signing yes;
+//        //dnssec-policy default;
+//        file "/etc/bind/db.wg.home.arpa";
+//    };
+//};
 
 // All other hosts (i.e. on my network)
 view "home" {

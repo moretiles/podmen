@@ -38,4 +38,40 @@ server {
 	location ~ /v1/pki/issuer/(?<issuer_id>(.*))/crl/delta/pem$ {
 		proxy_pass https://vault.home.arpa:{{ vault "kv/home/port/vault" "num" }}/v1/pki/issuer/$issuer_id/crl/delta/pem;
 	}
+
+	location ~ /v1/pki_root/issuer/(?<issuer_id>(.*))/json$ {
+		proxy_pass https://vault.home.arpa:{{ vault "kv/home/port/vault" "num" }}/v1/pki_root/issuer/$issuer_id/json;
+	}
+
+	location ~ /v1/pki_root/issuer/(?<issuer_id>(.*))/der$ {
+		proxy_pass https://vault.home.arpa:{{ vault "kv/home/port/vault" "num" }}/v1/pki_root/issuer/$issuer_id/der;
+	}
+
+	location ~ /v1/pki_root/issuer/(?<issuer_id>(.*))/pem$ {
+		proxy_pass https://vault.home.arpa:{{ vault "kv/home/port/vault" "num" }}/v1/pki_root/issuer/$issuer_id/pem;
+	}
+
+	location ~ /v1/pki_root/issuer/(?<issuer_id>(.*))/crl$ {
+		proxy_pass https://vault.home.arpa:{{ vault "kv/home/port/vault" "num" }}/v1/pki_root/issuer/$issuer_id/crl;
+	}
+
+	location ~ /v1/pki_root/issuer/(?<issuer_id>(.*))/crl/der$ {
+		proxy_pass https://vault.home.arpa:{{ vault "kv/home/port/vault" "num" }}/v1/pki_root/issuer/$issuer_id/crl/der;
+	}
+
+	location ~ /v1/pki_root/issuer/(?<issuer_id>(.*))/crl/pem$ {
+		proxy_pass https://vault.home.arpa:{{ vault "kv/home/port/vault" "num" }}/v1/pki_root/issuer/$issuer_id/crl/pem;
+	}
+
+	location ~ /v1/pki_root/issuer/(?<issuer_id>(.*))/crl/delta$ {
+		proxy_pass https://vault.home.arpa:{{ vault "kv/home/port/vault" "num" }}/v1/pki_root/issuer/$issuer_id/crl/delta;
+	}
+
+	location ~ /v1/pki_root/issuer/(?<issuer_id>(.*))/crl/delta/der$ {
+		proxy_pass https://vault.home.arpa:{{ vault "kv/home/port/vault" "num" }}/v1/pki_root/issuer/$issuer_id/crl/delta/der;
+	}
+
+	location ~ /v1/pki_root/issuer/(?<issuer_id>(.*))/crl/delta/pem$ {
+		proxy_pass https://vault.home.arpa:{{ vault "kv/home/port/vault" "num" }}/v1/pki_root/issuer/$issuer_id/crl/delta/pem;
+	}
 }
