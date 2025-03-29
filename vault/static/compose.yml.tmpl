@@ -2,7 +2,7 @@ version: "3.9"
 services:
   vault:
     #image: "docker.io/hashicorp/vault"
-    image: "localhost/vault:1.4"
+    image: "localhost/vault:1.5"
     container_name: "vault"
     user: {{ vault "kv/home/user/vault_podman" "uid" }}:{{ vault "kv/home/user/vault_podman" "gid" }}
     environment:

@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   registry:
-    image: "localhost/registry:1.0"
+    image: "localhost/registry:1.1"
     container_name: registry
     user: {{ vault "kv/home/user/registry_podman" "uid" }}:{{ vault "kv/home/user/registry_podman" "gid" }}
     volumes:

@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   bind:
-    image: localhost/bind:2.6
+    image: localhost/bind:2.7
     user: {{ vault "kv/home/user/bind_eth_podman" "uid" }}:{{ vault "kv/home/user/bind_eth_podman" "gid" }}
     container_name: bind-eth
     ports:
