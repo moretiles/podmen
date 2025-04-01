@@ -12,6 +12,6 @@ vault-templates templates
 cp ./config ../live/fs/vault/config
 #cp -r ../certs/. ../live/fs/vault/certs
 cp ./systemd.sh ../live/systemd.sh
-chown -R dv:dv ../live
-sudo -u dv ../../deploy.sh
+#chown -R dv:dv ../live
+../../deploy.sh
 #rm -rf ../live.tar ../live

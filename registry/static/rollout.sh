@@ -10,6 +10,6 @@ fi
 mkdir -p ../live
 vault-templates ./templates
 cp ./systemd.sh ../live
-chown -R dv:dv ../live
-sudo -u dv ../../deploy.sh
+#chown -R dv:dv ../live
+../../deploy.sh
 #rm -rf ../live ../live.tar
