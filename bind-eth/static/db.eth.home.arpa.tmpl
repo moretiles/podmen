@@ -3,7 +3,7 @@
 ;
 $TTL	86400
 @	IN	SOA	ns1.home.arpa. admin.home.arpa. (
-			      9		; Serial
+			      10	; Serial
 			  86400		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -18,9 +18,11 @@ vault     IN      A       {{ vault "kv/home/ips/vault" "ip" }}
 ca        IN      A       {{ vault "kv/home/ips/ca" "ip" }}
 registry  IN      A       {{ vault "kv/home/ips/registry" "ip" }}
 
-router	  IN	A	{{ vault "kv/home/ips/router" "ip" }}
-switch	  IN	A	{{ vault "kv/home/ips/switch" "ip" }}
+router	  IN	  A	      {{ vault "kv/home/ips/router" "ip" }}
+switch	  IN	  A	      {{ vault "kv/home/ips/switch" "ip" }}
 hostpi    IN      A       {{ vault "kv/home/ips/hostpi" "ip" }}
 
 oa        IN      A       {{ vault "kv/home/ips/oa" "ip" }}
 ob        IN      A       {{ vault "kv/home/ips/ob" "ip" }}
+
+desktop   IN      A       {{ vault "kv/home/ips/desktop" "ip" }}
