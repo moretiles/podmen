@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  docker_auth:
+    image: "localhost/docker_auth:0.2"
+    container_name: docker_auth
+    volumes:
+      - ./fs/etc/docker_auth/:/etc/docker_auth/:Z,U,ro
+      - ./fs/var/log/docker-auth/:/var/log/docker-auth/:Z,U
+    ports:
+      - "{{ vault "kv/home/ips/dockerauth" "ip" }}:{{ vault "kv/home/port/docker_auth" "num" }}:{{ vault "kv/home/port/docker_auth" "num" }}/tcp"
+    #command: sleep 300

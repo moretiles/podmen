@@ -1,0 +1,24 @@
+# A simple example. See reference.yml for explanation of all options.
+
+server:
+  addr: ":5002"
+  certificate: "/etc/docker_auth/auth-server-cert.pem"
+  key: "/etc/docker_auth/auth-server-key.rsa"
+
+token:
+  issuer: "home.arpa docker issuer"  # Must match issuer in the Registry config.
+  expiration: 900
+
+users:
+  # Password is specified as a BCrypt hash. Use `htpasswd -nB USERNAME` to generate.
+  "admin":
+    password: "{{ vault "kv/home/docker_auth/dev" "hash" }}"
+
+acl:
+  - match: {account: "dev"}
+    actions: ["*"]
+    comment: "Admin has full access to everything."
+  - match: {account: ""}
+    actions: ["pull"]
+    comment: "Anyone can pull images."
+  # Access is denied by default.

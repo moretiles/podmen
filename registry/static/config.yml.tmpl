@@ -28,9 +28,14 @@ http:
     certificate: /etc/docker-registry/cert.pem
     key: /etc/docker-registry/key.rsa
 auth:
-  htpasswd:
-    realm: basic-realm
-    path: /etc/htpasswd
+  token:
+    realm: "https://dockerauth.home.arpa:5002/auth"
+    service: "Docker registry"
+    issuer: "home.arpa docker issuer"
+    rootcertbundle: "/etc/docker-registry/auth-server-cert.pem"
+  #htpasswd:
+    #realm: basic-realm
+    #path: /etc/htpasswd
 health:
   storagedriver:
     enabled: true
