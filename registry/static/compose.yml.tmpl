@@ -3,7 +3,6 @@ services:
   registry:
     image: "localhost/registry:1.1"
     container_name: registry
-    user: {{ vault "kv/home/user/registry_podman" "uid" }}:{{ vault "kv/home/user/registry_podman" "gid" }}
     volumes:
       - ./fs/etc/docker-registry/:/etc/docker-registry/:Z,U,ro
       - ./fs/etc/htpasswd:/etc/htpasswd:Z,U,ro

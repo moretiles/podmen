@@ -3,7 +3,6 @@ services:
   vault-nginx:
     image: "localhost/nginx:1.3"
     container_name: vault-nginx
-    user: {{ vault "kv/home/user/vault_nginx_podman" "uid" }}:{{ vault "kv/home/user/vault_nginx_podman" "uid" }}
     volumes:
       - ./fs/etc/nginx/:/etc/nginx/:Z,U,ro
       - ./fs/var/log/nginx/:/var/log/nginx:Z,U
