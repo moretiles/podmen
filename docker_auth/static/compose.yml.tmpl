@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   docker_auth:
-    image: "localhost/docker_auth:0.2"
+    image: "localhost/docker_auth:0.3"
     container_name: docker_auth
     volumes:
       - ./fs/etc/docker_auth/:/etc/docker_auth/:Z,U,ro

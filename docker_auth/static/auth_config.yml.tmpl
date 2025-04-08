@@ -11,7 +11,7 @@ token:
 
 users:
   # Password is specified as a BCrypt hash. Use `htpasswd -nB USERNAME` to generate.
-  "admin":
+  "dev":
     password: "{{ vault "kv/home/docker_auth/dev" "hash" }}"
 
 acl:
