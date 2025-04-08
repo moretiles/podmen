@@ -4,18 +4,17 @@ services:
     #image: "docker.io/hashicorp/vault"
     image: "localhost/vault:1.5"
     container_name: "vault"
-    user: {{ vault "kv/home/user/vault_podman" "uid" }}:{{ vault "kv/home/user/vault_podman" "gid" }}
     environment:
       SKIP_CHOWN: "true"
       VAULT_ADDR: "https://vault.home.arpa:{{ vault "kv/home/port/vault" "num" }}"
       #VAULT_SKIP_VERIFY: "true"
       #HOME: "/vault"
     ports:
-	- "{{ vault "kv/home/ips/vault" "ip" }}:{{ vault "kv/home/port/vault" "num" }}:{{ vault "kv/home/port/vault" "num" }}/tcp"
-	- "{{ vault "kv/home/ips/vault" "ip" }}:{{ vault "kv/home/port/vault_cluster" "num" }}:{{ vault "kv/home/port/vault_cluster" "num" }}/tcp"
-        #- 8202:8202
-        #- 8300:8300
-        #- 8301:8301
+      - "{{ vault "kv/home/ips/vault" "ip" }}:{{ vault "kv/home/port/vault" "num" }}:{{ vault "kv/home/port/vault" "num" }}/tcp"
+      - "{{ vault "kv/home/ips/vault" "ip" }}:{{ vault "kv/home/port/vault_cluster" "num" }}:{{ vault "kv/home/port/vault_cluster" "num" }}/tcp"
+      #- 8202:8202
+      #- 8300:8300
+      #- 8301:8301
     volumes:
       - ./fs/vault/:/vault:Z,U
       #- /home/debian/vault/vault/:/vault:Z
