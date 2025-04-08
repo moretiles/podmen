@@ -11,12 +11,12 @@ $TTL	86400
 );
 
 @	IN	NS	ns1.home.arpa.
-ns1	IN	A	{{ vault "kv/wg/server" "ip" }}
+ns1	IN	A	{{ vault "kv/wg/server" "ip_external" }}
 
 ; Don't need to list hosts, only services which are accessed 
 ; by a reverse proxy on the server
 
-ntp       IN      A       {{ vault "kv/wg/server" "ip" }}
-vault     IN      A       {{ vault "kv/wg/server" "ip" }}
-ca        IN      A       {{ vault "kv/wg/server" "ip" }}
-registry  IN      A       {{ vault "kv/wg/server" "ip" }}
+ntp       IN      A       {{ vault "kv/wg/server" "ip_external" }}
+vault     IN      A       {{ vault "kv/wg/server" "ip_external" }}
+ca        IN      A       {{ vault "kv/wg/server" "ip_external" }}
+registry  IN      A       {{ vault "kv/wg/server" "ip_external" }}
