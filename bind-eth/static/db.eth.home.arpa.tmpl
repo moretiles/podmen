@@ -18,10 +18,16 @@ vault        IN      A       {{ vault "kv/home/ips/vault" "ip" }}
 ca           IN      A       {{ vault "kv/home/ips/ca" "ip" }}
 registry     IN      A       {{ vault "kv/home/ips/registry" "ip" }}
 dockerauth   IN      A       {{ vault "kv/home/ips/dockerauth" "ip" }}
+prometheus   IN      A       {{ vault "kv/home/ips/prometheus" "ip" }}
+loki         IN      A       {{ vault "kv/home/ips/loki" "ip" }}
+grafana      IN      A       {{ vault "kv/home/ips/grafana" "ip" }}
 
 router	     IN	     A	     {{ vault "kv/home/ips/router" "ip" }}
 switch	     IN	     A	     {{ vault "kv/home/ips/switch" "ip" }}
+
 hostpi       IN      A       {{ vault "kv/home/ips/hostpi" "ip" }}
+ne.hostpi    IN      A       {{ vault "kv/home/ips/hostpi" "node_exporter" }}
+pt.hostpi    IN      A       {{ vault "kv/home/ips/hostpi" "promtail" }}
 
 oa           IN      A       {{ vault "kv/home/ips/oa" "ip" }}
 ob           IN      A       {{ vault "kv/home/ips/ob" "ip" }}
