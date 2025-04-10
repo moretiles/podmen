@@ -16,6 +16,7 @@ services:
       - "127.0.0.53:53:5556/udp"
       - "127.0.0.54:53:5556/udp"
       - "[::1]:53:5556/udp"
+      - "{{ vault "kv/home/ips/ns1" "ip" }}:{{ vault "kv/home/port/bind" "rndc" }}:{{ vault "kv/home/port/bind" "rndc" }}"
     volumes:
       - ./fs/etc/bind:/etc/bind:Z,U
       - ./fs/var/cache/bind:/var/cache/bind:Z,U
