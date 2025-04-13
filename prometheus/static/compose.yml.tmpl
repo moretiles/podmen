@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  registry:
+    image: "localhost/prometheus:0.1"
+    container_name: prometheus
+    volumes:
+      - ./fs/etc/prometheus/:/etc/prometheus/:Z,U,ro
+      - ./fs/data:/data/:Z,U
+    ports:
+      - "{{ vault "kv/home/ips/prometheus" "ip" }}:{{ vault "kv/home/port/prometheus" "num" }}:{{ vault "kv/home/port/prometheus" "num" }}/tcp"
+    #command: sleep 300
