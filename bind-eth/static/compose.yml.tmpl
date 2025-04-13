@@ -21,6 +21,3 @@ services:
       - ./fs/etc/bind:/etc/bind:Z,U
       - ./fs/var/cache/bind:/var/cache/bind:Z,U
       #- ./volumes/usr/share/dns/root.hints:/usr/share/dns/root.hints:Z,ro
-    capabilities:
-      - CAP_NET_ADMIN
-      - CAP_NET_BIND_SERVICE
