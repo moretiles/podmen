@@ -9,6 +9,6 @@ fi
 
 mkdir -p ../live
 vault-templates ./templates
-cp ./systemd.sh ../live
+cp ./up.sh ./systemd.sh ../live
 ../../deploy.sh
 #rm -rf ../live ../live.tar
