@@ -11,7 +11,7 @@ mkdir -p ../live
 vault-templates templates
 cp ./config ../live/fs/vault/config
 #cp -r ../certs/. ../live/fs/vault/certs
-cp ./systemd.sh ../live/systemd.sh
+cp ./up.sh ./systemd.sh ../live
 #chown -R dv:dv ../live
 ../../deploy.sh
 #rm -rf ../live.tar ../live

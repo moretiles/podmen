@@ -1,12 +1,15 @@
-LDAP_ORGANISATION="Home Arpa"
-LDAP_DOMAIN="home.arpa"
-LDAP_ADMIN_PASSWORD_FILE="/container/service/slapd/assets/admin"
-LDAP_CONFIG_PASSWORD_FILE="/container/service/slapd/assets/config"
-LDAP_READONLY_USER="true"
-LDAP_READONLY_USER_PASSWORD_FILE="/container/service/slapd/assets/readonly"
-LDAP_TLS="true"
-LDAP_TLS_CRT_FILENAME="/container/service/slapd/assets/ldap.crt"
-LDAP_TLS_KEY_FILENAME="/container/service/slapd/assets/ldap.key"
-LDAP_TLS_CA_FILENAME="/container/service/slapd/assets/ca.crt"
-LDAP_TLS_ENFORCE="true"
-DISABLE_CHOWN="false"
+LDAP_ROOT=dc=home,dc=arpa
+LDAP_ADMIN_PASSWORD_FILE=/etc/outofband/admin
+LDAP_CONFIG_ADMIN_ENABLED=yes
+LDAP_CONFIG_ADMIN_PASSWORD_FILE=/etc/outofband/config
+
+LDAP_PORT_NUMBER=1389
+LDAP_LDAPS_PORT_NUMBER=1636
+
+LDAP_SKIP_DEFAULT_TREE=yes
+
+LDAP_ENABLE_TLS=yes
+LDAP_REQUIRE_TLS=yes
+LDAP_TLS_CERT_FILE=/etc/outofband/ldap.crt
+LDAP_TLS_KEY_FILE=/etc/outofband/ldap.key
+LDAP_TLS_CA_FILE=/etc/outofband/ca.crt
