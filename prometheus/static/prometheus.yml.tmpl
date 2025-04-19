@@ -41,31 +41,31 @@ scrape_configs:
     scheme: https
     basic_auth:
       username: prometheus
-      password: {{ vault (printf "%v/%v/%v/%v" "kv" "home" "logging" "hostpi") "node_exporter_password" }}
+      password: {{ vault "kv/home/logging/hostpi" "node_exporter_password" }}
     #tls_config:
       #ca_file: prom_exporter.crt
       #insecure_skip_verify: true
     static_configs:
-    - targets: ['{{ printf "%v.%v.%v.%v:%v" "ne" "hostpi" "home" "arpa" (vault "kv/home/port/node_exporter" "num") }}']
+    - targets: ['hostpi.home.arpa:{{ vault "kv/home/port/node_exporter" "num" }}']
 
   - job_name: node_exporter_oa
     scheme: https
     basic_auth:
       username: prometheus
-      password: {{ vault (printf "%v/%v/%v/%v" "kv" "home" "logging" "oa") "node_exporter_password" }}
+      password: {{ vault "kv/home/logging/oa" "node_exporter_password" }}
     #tls_config:
       #ca_file: prom_exporter.crt
       #insecure_skip_verify: true
     static_configs:
-    - targets: ['{{ printf "%v.%v.%v.%v:%v" "ne" "oa" "home" "arpa" (vault "kv/home/port/node_exporter" "num") }}']
+    - targets: ['oa.home.arpa:{{ vault "kv/home/port/node_exporter" "num" }}']
 
   - job_name: node_exporter_ob
     scheme: https
     basic_auth:
       username: prometheus
-      password: {{ vault (printf "%v/%v/%v/%v" "kv" "home" "logging" "ob") "node_exporter_password" }}
+      password: {{ vault "kv/home/logging/ob" "node_exporter_password" }}
     #tls_config:
       #ca_file: prom_exporter.crt
       #insecure_skip_verify: true
     static_configs:
-    - targets: ['{{ printf "%v.%v.%v.%v:%v" "ne" "ob" "home" "arpa" (vault "kv/home/port/node_exporter" "num") }}']
+    - targets: ['ob.home.arpa:{{ vault "kv/home/port/node_exporter" "num" }}']

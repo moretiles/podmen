@@ -27,9 +27,6 @@ router	     IN	     A	     {{ vault "kv/home/ips/router" "ip" }}
 switch	     IN	     A	     {{ vault "kv/home/ips/switch" "ip" }}
 
 hostpi       IN      A       {{ vault "kv/home/ips/hostpi" "ip" }}
-ne.hostpi    IN      A       {{ vault "kv/home/ips/hostpi" "node_exporter" }}
-pt.hostpi    IN      A       {{ vault "kv/home/ips/hostpi" "promtail" }}
-
 oa           IN      A       {{ vault "kv/home/ips/oa" "ip" }}
 ob           IN      A       {{ vault "kv/home/ips/ob" "ip" }}
 

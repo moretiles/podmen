@@ -7,7 +7,7 @@ if (( "$(id -u)" != 0 )); then
 	exit 1
 fi
 
-podman generate systemd --new --requires bind-eth_podman.service --after bind-eth_podman.service --after vault.target --requires vault.target --wants vault-certificate@ldap_podman.timer ldap
+podman generate systemd --new --requires bind-eth_podman.service --after bind-eth_podman.service --requires ldap-pre.service --after ldap-pre.service ldap
 echo 'WAIT
 echo 'Make sure to activate vault-certificate@ldap_podman.timer'
 echo 'WAIT
