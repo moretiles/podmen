@@ -7,4 +7,7 @@ if (( "$(id -u)" != 0 )); then
 	exit 1
 fi
 
-podman generate systemd --new bind-eth --after wg-quick.target --requires wg-quick.target
+podman generate systemd --new --requires bind-eth_podman.service --after bind-eth_podman.service --after vault.target --requires vault.target --wants vault-certificate@grafana_podman.timer grafana
+echo 'WAIT
+echo 'Make sure to enable vault-certificate@postgres_podman.timer'
+echo 'WAIT
