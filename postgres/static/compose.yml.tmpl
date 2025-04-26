@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  postgres:
+    image: localhost/postgres:0.3
+    container_name: postgres
+    user: "999:999"
+    env_file:
+      - "./env_file"
+    ports:
+      - "{{ vault "kv/home/ips/postgres" "ip" }}:5432:5432"
+    volumes:
+      - ./fs/etc/postgresql/:/etc/postgresql/:Z,U,ro
+      - ./fs/var/lib/postgresql/data/:/var/lib/postgresql/data/:Z,U
