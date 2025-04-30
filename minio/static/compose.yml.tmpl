@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  minio:
+    image: quay.io/minio/minio
+    container_name: minio
+    env_file:
+      - "./env_file"
+    ports:
+      - "{{ vault "kv/home/ips/minio" "ip" }}:9000:9000"
+      - "{{ vault "kv/home/ips/minio" "ip" }}:9001:9001"
+      - "{{ vault "kv/home/ips/minio" "ip" }}:9443:9443"
+    volumes:
+      #- ./fs/bitnami/minio/data:/bitnami/minio/data:Z,U
+      - ./fs/data:/data:Z,U
+      - ./fs/etc/outofband/certs:/etc/outofband/certs:Z,U,ro
+    domainname: "home.arpa"
+    hostname: "minio.home.arpa"
+    deploy:
+      resources:
+        limits:
+          cpus: 1.000
+          memory: 2048M
+    command: server /data --console-address ":9001" --certs-dir /etc/outofband/certs --address minio.home.arpa:9000
