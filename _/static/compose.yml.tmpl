@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  :
+    image: 
+    container_name: 
+    env_file:
+      - "./env_file"
+    ports:
+      - "{{ vault "kv/home/ips/_" "ip" }}:9000:9000"
+    volumes:
+      - ./fs/etc/_/:/etc/_/:Z,U,ro
+    domainname: "home.arpa"
+    hostname: "_.home.arpa"
