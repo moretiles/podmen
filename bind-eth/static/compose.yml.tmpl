@@ -5,13 +5,13 @@ services:
     container_name: bind-eth
     ports:
       - "{{ vault "kv/home/ips/ns1" "ip" }}:53:5556/tcp"
-      - "{{ vault "kv/wg/server" "ip_external" }}:53:5556/tcp"
+      - "{{ vault "kv/wg/home/server" "ip_external" }}:53:5556/tcp"
       - "127.0.0.1:53:5556/tcp"
       - "127.0.0.53:53:5556/tcp"
       - "127.0.0.54:53:5556/tcp"
       - "[::1]:53:5556/tcp"
       - "{{ vault "kv/home/ips/ns1" "ip" }}:53:5556/udp"
-      - "{{ vault "kv/wg/server" "ip_external" }}:53:5556/udp"
+      - "{{ vault "kv/wg/home/server" "ip_external" }}:53:5556/udp"
       - "127.0.0.1:53:5556/udp"
       - "127.0.0.53:53:5556/udp"
       - "127.0.0.54:53:5556/udp"

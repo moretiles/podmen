@@ -32,4 +32,6 @@ hostpi       IN      A       {{ vault "kv/home/ips/hostpi" "ip" }}
 oa           IN      A       {{ vault "kv/home/ips/oa" "ip" }}
 ob           IN      A       {{ vault "kv/home/ips/ob" "ip" }}
 
+az-bastion   IN      A       {{ vault "kv/wg/azure/bastion" "ip" }}
+
 desktop      IN      A       {{ vault "kv/home/ips/desktop" "ip" }}
