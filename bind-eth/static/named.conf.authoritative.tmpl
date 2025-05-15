@@ -7,7 +7,7 @@ acl goodclients {
 	172.16.0.0/12; //#gitleaks:allow
 };
 
-acl wireguard { {{ vault "kv/wg/network" "ip"}}/{{ vault "kv/wg/network" "cidr" }}; };
+acl wireguard { {{ vault "kv/wg/home/network" "ip"}}/{{ vault "kv/wg/home/network" "cidr" }}; };
 
 options {
 	listen-on port 5556 { any; };
