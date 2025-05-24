@@ -1,0 +1,17 @@
+;
+; BIND data file for the pub2 zone
+;
+
+$TTL  86400
+@ IN  SOA ns1.{{ vault "kv/domains/pub2" "full" }}.  admin.{{ vault "kv/domains/pub2" "full" }}.  (
+            11  ; Serial
+        86400   ; Refresh
+        86400   ; Retry
+      2419200   ; Expire
+       86400          ; Negative Cache TTL
+);
+
+@ IN  NS  ns1.{{ vault "kv/domains/pub2" "full" }}.
+@ IN  A {{ vault "kv/wg/azure/bastion" "ip" }}
+ns1 IN  A {{ vault "kv/wg/azure/bastion" "ip" }}
+grafana      IN      A       {{ vault "kv/home/ips/grafana" "ip" }}

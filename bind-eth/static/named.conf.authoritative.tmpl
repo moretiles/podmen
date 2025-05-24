@@ -61,6 +61,41 @@ view "home" {
 		//dnssec-policy default;
 		file "/etc/bind/db.eth.home.arpa";
 	};
+
+	zone "{{ vault "kv/domains/pub1" "full" }}" {
+		type master;
+		//inline-signing yes;
+		//dnssec-policy default;
+		file "/etc/bind/db.eth.pub1";
+	};
+
+	zone "{{ vault "kv/domains/pub2" "full" }}" {
+		type master;
+		//inline-signing yes;
+		//dnssec-policy default;
+		file "/etc/bind/db.eth.pub2";
+	};
+
+//	zone "{{ vault "kv/domains/pub3" "full" }}" {
+//		type master;
+//		//inline-signing yes;
+//		//dnssec-policy default;
+//		file "/etc/bind/db.eth.pub3";
+//	};
+//
+//	zone "{{ vault "kv/domains/pub4" "full" }}" {
+//		type master;
+//		//inline-signing yes;
+//		//dnssec-policy default;
+//		file "/etc/bind/db.eth.pub4";
+//	};
+//
+//	zone "{{ vault "kv/domains/pub5" "full" }}" {
+//		type master;
+//		//inline-signing yes;
+//		//dnssec-policy default;
+//		file "/etc/bind/db.eth.pub5";
+//	};
 };
 
 key "rndc-key" {

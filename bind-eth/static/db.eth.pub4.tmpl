@@ -1,0 +1,5 @@
+;
+; BIND data file for the pub4 zone
+;
+
+grafana.{{ vault "kv/domains/pub4" "full" }}.      IN      A       {{ vault "kv/home/ips/grafana" "ip" }}

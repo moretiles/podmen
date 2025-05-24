@@ -1,4 +1,4 @@
-FROM docker.i../../+/bitnami/openldap
+FROM docker.io/bitnami/openldap
 ADD ../../+/certs/ /usr/local/share/ca-certificates
 # Need to do a switcheroo here to use custom permissions just for this then switch back
 USER 0

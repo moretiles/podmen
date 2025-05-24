@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  nginx:
+    image: "docker.io/nginx"
+    container_name: nginx
+    volumes:
+      - ./fs/etc/nginx/:/etc/nginx/:Z,U,ro
+      - ./fs/etc/certs/:/etc/certs/:Z,U,ro
+      #- ./fs/var/log/nginx/:/var/log/nginx:Z,U
+      #- ./fs/var/lib/nginx/:/var/lib/nginx/:Z,U
+      #- ./fs/run/nginx/:/run/nginx/:Z,U
+    ports:
+    - {{ vault "kv/home/ips/hostpi" "ip" }}:443:443
+    - {{ vault "kv/home/ips/hostpi" "ip" }}:80:80
+    #command: sleep 300
