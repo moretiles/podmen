@@ -20,4 +20,5 @@ services:
         limits:
           cpus: 1.000
           memory: 2048M
-    command: server /data --certs-dir /etc/outofband/certs --address "minio.home.arpa:9000" --console-address "minio.home.arpa:9001"
+    #command: server /data --certs-dir /etc/outofband/certs --address "minio.home.arpa:9000" --console-address "minio.home.arpa:9001"
+    command: server /data --certs-dir /etc/outofband/certs --address ":9000" --console-address ":9001"

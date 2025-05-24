@@ -1,2 +1,5 @@
 MINIO_ROOT_USER=root
 MINIO_ROOT_PASSWORD={{ vault "kv/home/minio/users/root" "password" }}
+# MINIO_BROWSER_REDIRECT_URL is used by minio when signing using the s3 signature algorithm.
+# Make sure minio is only accessed on that fqdn.
+MINIO_BROWSER_REDIRECT_URL=minio.home.arpa

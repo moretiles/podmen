@@ -3,7 +3,7 @@
 ;
 $TTL	86400
 @	IN	SOA	ns1.home.arpa. admin.home.arpa. (
-			      10	; Serial
+			      11	; Serial
 			  86400		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -31,6 +31,14 @@ switch	     IN	     A	     {{ vault "kv/home/ips/switch" "ip" }}
 hostpi       IN      A       {{ vault "kv/home/ips/hostpi" "ip" }}
 oa           IN      A       {{ vault "kv/home/ips/oa" "ip" }}
 ob           IN      A       {{ vault "kv/home/ips/ob" "ip" }}
+
+oaa          IN      A       {{ vault "kv/home/ips/oaa" "ip" }}
+oab          IN      A       {{ vault "kv/home/ips/oab" "ip" }}
+oac          IN      A       {{ vault "kv/home/ips/oac" "ip" }}
+
+oba          IN      A       {{ vault "kv/home/ips/oba" "ip" }}
+obb          IN      A       {{ vault "kv/home/ips/obb" "ip" }}
+obc          IN      A       {{ vault "kv/home/ips/obc" "ip" }}
 
 az-bastion   IN      A       {{ vault "kv/wg/azure/bastion" "ip" }}
 

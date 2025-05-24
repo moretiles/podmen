@@ -1,0 +1,19 @@
+;
+; BIND data file for the pub1 zone
+;
+
+$TTL  86400
+@ IN  SOA ns1.{{ vault "kv/domains/pub1" "full" }}.  admin.{{ vault "kv/domains/pub1" "full" }}.  (
+            11  ; Serial
+        86400   ; Refresh
+        86400   ; Retry
+      2419200   ; Expire
+       86400          ; Negative Cache TTL
+);
+
+@ IN  NS  ns1.{{ vault "kv/domains/pub1" "full" }}. 
+@ IN  A {{ vault "kv/wg/home/server" "ip_external" }}
+ns1 IN  A {{ vault "kv/wg/home/server" "ip_external" }}
+//grafana      CNAME       grafana.home.arpa.
+grafana       IN      A       {{ vault "kv/home/ips/hostpi" "ip" }}
+minio       IN      A       {{ vault "kv/home/ips/hostpi" "ip" }}
