@@ -189,6 +189,62 @@ http {
       proxy_pass https://minio.home.arpa:{{ vault "kv/home/port/minio" "console" }};
     }
   }
+
+  server {
+	  listen 80 ssl;
+	  listen [::]:80 ssl;
+    server_name vault.{{ vault "kv/domains/pub1" "full" }};
+    ssl_certificate /etc/certs/vault/fullchain.pem;
+    ssl_certificate_key /etc/certs/vault/privkey.pem;
+
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-NginX-Proxy true;
+
+    # This is necessary to pass the correct IP to be hashed
+    real_ip_header X-Real-IP;
+
+    # enable websockets
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+
+    proxy_ssl_verify on;
+    proxy_ssl_trusted_certificate /etc/certs/roots/homearpa.crt;
+    proxy_ssl_session_reuse on;
+    location / {
+      proxy_pass https://vault.home.arpa:{{ vault "kv/home/port/vault" "num" }};
+    }
+  }
+
+  server {
+	  listen 443 ssl;
+	  listen [::]:443 ssl;
+    server_name vault.{{ vault "kv/domains/pub1" "full" }};
+    ssl_certificate /etc/certs/vault/fullchain.pem;
+    ssl_certificate_key /etc/certs/vault/privkey.pem;
+
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-NginX-Proxy true;
+
+    # This is necessary to pass the correct IP to be hashed
+    real_ip_header X-Real-IP;
+
+    # enable websockets
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+
+    proxy_ssl_verify on;
+    proxy_ssl_trusted_certificate /etc/certs/roots/homearpa.crt;
+    proxy_ssl_session_reuse on;
+    location / {
+      proxy_pass https://vault.home.arpa:{{ vault "kv/home/port/vault" "num" }};
+    }
+  }
 }
 
 ## Proxy attempts made to contact the ca server to vault's ca and crl endpoints
