@@ -7,4 +7,10 @@ if (( "$(id -u)" != 0 )); then
 	exit 1
 fi
 
-podman generate systemd --new bind-eth --after wg-quick.target --requires wg-quick.target --before vault.target
+podman generate systemd --new bind-eth
+echo <<EOF
+##############################################
+Please add:
+[Service]
+ExecStartPre=sleep 20
+##############################################
