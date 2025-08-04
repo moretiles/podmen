@@ -12,4 +12,5 @@ services:
     ports:
     - {{ vault "kv/home/ips/hostpi" "ip" }}:443:443
     - {{ vault "kv/home/ips/hostpi" "ip" }}:80:80
+    - {{ vault "kv/home/ips/hostpi" "ip" }}:{{ vault "kv/home/port/minio" "addr" }}:{{ vault "kv/home/port/minio" "addr" }}
     #command: sleep 300
