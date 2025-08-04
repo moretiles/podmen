@@ -12,5 +12,5 @@ echo <<EOF
 ##############################################
 Please add:
 [Service]
-ExecStartPre=sleep 20
+ExecStartPre=sleep 40
 ##############################################
